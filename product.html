@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>طقم إليورا الفاخر | متجر إليورا للانجري</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+
+  <!-- Google Font -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&display=swap"
+    rel="stylesheet" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#2f1321', // Dark Plum
+              light: '#4a2035',
+            },
+            accent: {
+              DEFAULT: '#e45b8a', // Soft Pink
+              light: '#f6a8c2',
+              hover: '#c82f63',
+            },
+            sand: '#f5ebe7',
+            blush: '#fff8f5',
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            playfair: ['Playfair Display', 'serif'],
+          },
+          boxShadow: {
+            'premium': '0 4px 20px -2px rgba(47, 19, 33, 0.1), 0 2px 10px -2px rgba(0, 0, 0, 0.05)',
+            'floating': '0 10px 40px -10px rgba(228, 91, 138, 0.3)',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Premium Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+
+    .glass-effect {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    /* Custom Scrollbar for Carousel */
+    .hide-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .hide-scroll {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    /* Selection Styles */
+    .color-option.active {
+      transform: scale(1.2);
+      ring: 2px solid #2f1321;
+    }
+
+    .size-option.active {
+      background-color: #2f1321;
+      color: white;
+      border-color: #2f1321;
+    }
+
+    /* Menu Animations */
+    .menu-enter {
+      opacity: 0;
+      transform: translateX(20px);
+      transition: all 0.4s ease-out;
+    }
+
+    .menu-enter-active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .stagger-1 {
+      transition-delay: 100ms;
+    }
+
+    .stagger-2 {
+      transition-delay: 150ms;
+    }
+
+    .stagger-3 {
+      transition-delay: 200ms;
+    }
+
+    .stagger-4 {
+      transition-delay: 250ms;
+    }
+
+    .stagger-5 {
+      transition-delay: 300ms;
+    }
+
+    .stagger-6 {
+      transition-delay: 350ms;
+    }
+  </style>
+</head>
+
+<body class="font-cairo bg-blush text-primary pb-24 sm:pb-0">
+
+  <!-- Promo Bar -->
+  <div class="bg-primary text-white text-[11px] sm:text-xs py-2 text-center relative z-50">
+    <p>شحن مجاني للطلبات فوق 299 ر.س 🚚 | استبدال مجاني خلال 7 أيام</p>
+  </div>
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 glass-effect border-b border-white/50">
+    <div class="max-w-7xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
+
+      <!-- Mobile Menu & Search -->
+      <div class="flex items-center gap-4">
+        <button id="mobileMenuBtn" class="lg:hidden p-2 -mr-2 text-primary" aria-label="Menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+        <button class="p-2 text-primary/70 hover:text-accent transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Logo -->
+      <a href="index.html" class="absolute left-1/2 -translate-x-1/2 group">
+        <img src="https://cdn.salla.sa/wjBYz/jUswOYjAqz2JF3apQD7pIh2dbv7ppfHNsK3g30Rl.jpg" alt="Elora"
+          class="h-8 sm:h-12 object-contain transition-transform group-hover:scale-105">
+      </a>
+
+      <!-- Cart -->
+      <button onclick="toggleCart(true)" class="relative p-2 text-primary hover:text-accent transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        <span id="cartCount"
+          class="absolute top-1 -left-0.5 bg-accent text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Drawer MENU mobile Redesign -->
+  <div id="mobileMenu" class="fixed inset-0 z-[70] hidden pointer-events-none">
+    <!-- Backdrop -->
+    <div id="mobileMenuBackdrop"
+      class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-auto"
+      onclick="toggleMobileMenu(false)"></div>
+
+    <!-- Panel -->
+    <aside id="mobileMenuPanel"
+      class="absolute top-0 right-0 w-[85%] max-w-sm h-full bg-[#1a0b13] text-white shadow-2xl flex flex-col transform translate-x-full transition-transform duration-500 cubic-bezier(0.16, 1, 0.3, 1) pointer-events-auto border-l border-white/10">
+      <div class="px-6 py-6 flex items-center justify-between border-b border-white/5 bg-white/5 backdrop-blur-md">
+        <div>
+          <p class="text-[10px] text-accent uppercase tracking-[0.3em] font-bold mb-1">MENU</p>
+          <img src="https://cdn.salla.sa/wjBYz/jUswOYjAqz2JF3apQD7pIh2dbv7ppfHNsK3g30Rl.jpg"
+            class="h-8 object-contain brightness-0 invert opacity-80" alt="Logo">
+        </div>
+        <button onclick="toggleMobileMenu(false)"
+          class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white hover:bg-white/10 transition-colors border border-white/10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+      <nav class="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+        <div class="space-y-4">
+          <a href="index.html#collections" onclick="toggleMobileMenu(false)"
+            class="menu-item menu-enter stagger-1 group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all">
+            <span class="text-lg font-bold group-hover:text-accent transition-colors">جديد الموسم <span
+                class="text-[9px] bg-accent/20 text-accent px-1.5 py-0.5 rounded mr-2">NEW</span></span>
+          </a>
+          <a href="index.html#luxury" onclick="toggleMobileMenu(false)"
+            class="menu-item menu-enter stagger-2 group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all">
+            <span class="text-lg font-bold group-hover:text-white transition-colors">أطقم فاخرة</span>
+          </a>
+          <a href="index.html#comfort" onclick="toggleMobileMenu(false)"
+            class="menu-item menu-enter stagger-3 group flex items-center justify-between p-3 rounded-xl hover:bg-white/5 transition-all">
+            <span class="text-lg font-bold group-hover:text-white transition-colors">راحة يومية</span>
+          </a>
+        </div>
+      </nav>
+      <div class="p-6 bg-black/20 border-t border-white/5 space-y-4">
+        <a href="https://wa.me/966500000000"
+          class="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white font-bold rounded-xl py-3.5 hover:bg-[#20bd5a] transition shadow-lg shadow-green-500/10">
+          تحدثي معنا
+        </a>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Breadcrumbs -->
+  <nav class="max-w-7xl mx-auto px-4 py-4 text-xs text-gray-400 flex items-center gap-2">
+    <a href="index.html" class="hover:text-primary">الرئيسية</a>
+    <span>/</span>
+    <a href="#" class="hover:text-primary">لانجري</a>
+    <span>/</span>
+    <span class="text-primary font-bold">طقم إليورا كلاسيك</span>
+  </nav>
+
+  <!-- Main Product Section -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-12 gap-8 lg:gap-16">
+
+      <!-- Right: Image Gallery -->
+      <div class="lg:col-span-7 space-y-4">
+        <div
+          class="relative overflow-hidden rounded-[2rem] bg-sand/30 aspect-[3/4] sm:aspect-[4/5] lg:aspect-[3/4] group">
+          <img id="mainImage" src="https://m.media-amazon.com/images/I/71u9y-e2QpL._AC_UY1000_.jpg" alt="Lingerie"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div
+            class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase">
+            Best Seller</div>
+        </div>
+        <!-- Thumbnails -->
+        <div class="flex gap-3 overflow-x-auto hide-scroll pb-2">
+          <button onclick="changeImage(this)"
+            class="w-20 h-24 rounded-xl overflow-hidden border-2 border-primary p-0.5 transition-all flex-shrink-0">
+            <img src="https://m.media-amazon.com/images/I/71u9y-e2QpL._AC_UY1000_.jpg"
+              class="w-full h-full object-cover rounded-lg" />
+          </button>
+          <button onclick="changeImage(this)"
+            class="w-20 h-24 rounded-xl overflow-hidden border border-transparent hover:border-accent/50 p-0.5 transition-all flex-shrink-0">
+            <img src="https://images-na.ssl-images-amazon.com/images/I/61N+ibw-UjL._AC_UL1500_.jpg"
+              class="w-full h-full object-cover rounded-lg" />
+          </button>
+          <button onclick="changeImage(this)"
+            class="w-20 h-24 rounded-xl overflow-hidden border border-transparent hover:border-accent/50 p-0.5 transition-all flex-shrink-0">
+            <img src="https://i.pinimg.com/736x/8f/1a/1a/8f1a1a79402506692994e63777263593.jpg"
+              class="w-full h-full object-cover rounded-lg" />
+          </button>
+        </div>
+      </div>
+
+      <!-- Left: Details & Forms -->
+      <div class="lg:col-span-5 lg:sticky lg:top-32 space-y-8 self-start">
+
+        <!-- Header Info -->
+        <div class="space-y-2 border-b border-black/5 pb-6">
+          <div class="flex items-center justify-between">
+            <span class="text-accent text-xs font-bold tracking-widest uppercase">Elora Collection</span>
+            <div class="flex text-amber-400 text-xs">★★★★★ <span class="text-gray-400 mr-1 text-[10px]">(42
+                تقييم)</span></div>
+          </div>
+          <h1 class="font-playfair text-3xl sm:text-4xl text-primary font-bold leading-tight">طقم إليورا كلاسيك - دانتيل
+            فاخر</h1>
+          <div class="flex items-baseline gap-3 pt-2">
+            <span class="text-2xl font-bold font-cairo">189 ر.س</span>
+            <span class="text-sm text-gray-400 line-through">260 ر.س</span>
+            <span class="bg-red-50 text-red-600 text-[10px] px-2 py-0.5 rounded-full font-bold">خصم 25%</span>
+          </div>
+          <p class="text-xs text-gray-500">ادفع 47.25 ر.س فقط عبر <span class="font-bold text-primary">Tamara</span>
+            (بدون فوائد)</p>
+        </div>
+
+        <!-- Selectors -->
+        <div class="space-y-6">
+
+          <!-- Colors -->
+          <div class="space-y-3">
+            <span class="text-sm font-bold">اللون: <span id="selectedColorName" class="font-normal text-gray-500">أسود
+                ملكي</span></span>
+            <div class="flex gap-3">
+              <button onclick="selectColor(this, 'أسود ملكي')"
+                class="color-option active w-8 h-8 rounded-full bg-black ring-1 ring-offset-2 ring-transparent transition-all"></button>
+              <button onclick="selectColor(this, 'أحمر قاني')"
+                class="color-option w-8 h-8 rounded-full bg-[#800020] ring-1 ring-offset-2 ring-transparent transition-all"></button>
+              <button onclick="selectColor(this, 'وردي ناعم')"
+                class="color-option w-8 h-8 rounded-full bg-[#ffc0cb] ring-1 ring-offset-2 ring-transparent transition-all"></button>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="space-y-3">
+            <div class="flex justify-between items-center">
+              <span class="text-sm font-bold">المقاس: <span id="selectedSizeName"
+                  class="font-normal text-gray-500">M</span></span>
+              <button onclick="toggleSizeGuide()"
+                class="text-xs underline text-accent hover:text-primary transition-colors flex items-center gap-1">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                  </path>
+                </svg>
+                دليل المقاسات
+              </button>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="selectSize(this, 'S')"
+                class="size-option w-12 h-10 rounded-lg border border-black/10 text-sm font-medium hover:border-primary transition-all flex items-center justify-center">S</button>
+              <button onclick="selectSize(this, 'M')"
+                class="size-option active w-12 h-10 rounded-lg border border-black/10 text-sm font-medium hover:border-primary transition-all flex items-center justify-center">M</button>
+              <button onclick="selectSize(this, 'L')"
+                class="size-option w-12 h-10 rounded-lg border border-black/10 text-sm font-medium hover:border-primary transition-all flex items-center justify-center">L</button>
+              <button onclick="selectSize(this, 'XL')"
+                class="size-option w-12 h-10 rounded-lg border border-black/10 text-sm font-medium hover:border-primary transition-all flex items-center justify-center">XL</button>
+            </div>
+            <p id="sizeError" class="text-xs text-red-500 hidden font-bold">الرجاء اختيار المقاس!</p>
+          </div>
+
+        </div>
+
+        <!-- Sticky CTA on Mobile -->
+        <div
+          class="fixed bottom-0 left-0 right-0 p-4 bg-white/95 backdrop-blur border-t border-gray-100 lg:static lg:bg-transparent lg:border-none lg:p-0 z-50 flex gap-3 animate-[slideUp_0.3s_ease-out]">
+          <button onclick="addProductToCart()"
+            class="flex-1 bg-primary text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-primary-light transition-colors shadow-lg shadow-primary/20">
+            <span>أضف للسلة</span>
+            <span class="text-[10px] bg-white/10 px-1.5 rounded">189 ر.س</span>
+          </button>
+          <button onclick="buyNow()"
+            class="flex-1 bg-accent text-white py-3.5 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-accent-hover transition-colors shadow-lg shadow-accent/20">
+            طلب سريع ⚡
+          </button>
+        </div>
+        <!-- Spacer for mobile -->
+        <div class="h-20 lg:hidden"></div>
+
+        <!-- Trust Badges -->
+        <div class="grid grid-cols-3 gap-4 border-t border-black/5 pt-6 text-center">
+          <div class="space-y-1">
+            <div class="w-10 h-10 mx-auto rounded-full bg-sand flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <p class="text-[10px] font-bold">أصلي 100%</p>
+          </div>
+          <div class="space-y-1">
+            <div class="w-10 h-10 mx-auto rounded-full bg-sand flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+            </div>
+            <p class="text-[10px] font-bold">شحن سريع</p>
+          </div>
+          <div class="space-y-1">
+            <div class="w-10 h-10 mx-auto rounded-full bg-sand flex items-center justify-center text-primary">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                  d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+              </svg>
+            </div>
+            <p class="text-[10px] font-bold">دفع آمن</p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="prose prose-sm prose-p:text-gray-500">
+          <h3 class="font-bold text-primary text-lg mb-2">الوصف والمميزات</h3>
+          <p>استمتعي بالفخامة والراحة مع طقم إليورا الكلاسيكي. مصمم بعناية ليبرز أنوثتك بخامات دانتيل فرنسي ناعم وبطانة
+            قطنية 100% لراحة تدوم طوال اليوم.</p>
+          <ul class="list-disc pr-4 space-y-1 mt-2 text-xs">
+            <li>تصميم عصري وجذاب يناسب جميع الأوقات.</li>
+            <li>حمالات قابلة للتعديل لثبات مثالي.</li>
+            <li>لا يسبب الحساسية بفضل الخامات الطبيعية.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Related Products Carousel -->
+  <section class="max-w-7xl mx-auto px-4 py-16 border-t border-black/5 mt-16">
+    <div class="flex items-center justify-between mb-8">
+      <h2 class="text-2xl font-bold font-playfair text-primary">منتجات قد تعجبك</h2>
+      <a href="#" class="text-sm text-accent hover:underline">عرض الكل</a>
+    </div>
+
+    <!-- Scroll Container -->
+    <div class="flex gap-4 overflow-x-auto hide-scroll pb-10 snap-x snap-mandatory">
+
+      <!-- Card 1 -->
+      <a href="#" class="min-w-[45%] sm:min-w-[220px] snap-center group">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-sand mb-3">
+          <img src="https://i.pinimg.com/736x/2c/80/7e/2c807e32402927287950269395279261.jpg"
+            class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+          <span class="absolute top-2 left-2 bg-white/90 text-[10px] px-2 py-0.5 rounded font-bold">جديد</span>
+        </div>
+        <h3 class="font-bold text-sm truncate">روب ستان حريري</h3>
+        <p class="text-xs text-gray-500">220 ر.س</p>
+      </a>
+
+      <!-- Card 2 -->
+      <a href="#" class="min-w-[45%] sm:min-w-[220px] snap-center group">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-sand mb-3">
+          <img src="https://i.pinimg.com/736x/8f/1a/1a/8f1a1a79402506692994e63777263593.jpg"
+            class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        </div>
+        <h3 class="font-bold text-sm truncate">طقم نوم دانتيل</h3>
+        <p class="text-xs text-gray-500">150 ر.س</p>
+      </a>
+
+      <!-- Card 3 -->
+      <a href="#" class="min-w-[45%] sm:min-w-[220px] snap-center group">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-sand mb-3">
+          <img src="https://m.media-amazon.com/images/I/71u9y-e2QpL._AC_UY1000_.jpg"
+            class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+          <span
+            class="absolute bottom-2 right-2 bg-red-500 text-white text-[10px] px-2 py-0.5 rounded font-bold">-20%</span>
+        </div>
+        <h3 class="font-bold text-sm truncate">حمالة صدر بوش اب</h3>
+        <p class="text-xs text-gray-500"><span class="line-through text-gray-300 ml-1">99</span> 79 ر.س</p>
+      </a>
+
+      <!-- Card 4 -->
+      <a href="#" class="min-w-[45%] sm:min-w-[220px] snap-center group">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-sand mb-3">
+          <img src="https://images-na.ssl-images-amazon.com/images/I/61N+ibw-UjL._AC_UL1500_.jpg"
+            class="w-full h-full object-cover transition duration-700 group-hover:scale-110" />
+        </div>
+        <h3 class="font-bold text-sm truncate">بيجامة قطن ناعم</h3>
+        <p class="text-xs text-gray-500">180 ر.س</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Size Guide Modal -->
+  <div id="sizeGuideModal" class="fixed inset-0 z-[80] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" onclick="toggleSizeGuide()"></div>
+    <div class="bg-white w-full max-w-md rounded-2xl p-6 relative z-10 animate-[fadeInUp_0.3s_ease-out]">
+      <button onclick="toggleSizeGuide()" class="absolute top-4 right-4 text-gray-400 hover:text-black">✕</button>
+      <h3 class="font-bold text-lg mb-4 text-center">جدول المقاسات</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs sm:text-sm text-center">
+          <thead class="bg-gray-50 text-gray-500 font-bold">
+            <tr>
+              <th class="py-2 px-1">المقاس</th>
+              <th class="py-2 px-1">محيط الصدر (سم)</th>
+              <th class="py-2 px-1">محيط الخصر (سم)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-100">
+            <tr>
+              <td class="py-2 font-bold">S</td>
+              <td>82-86</td>
+              <td>62-66</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">M</td>
+              <td>87-91</td>
+              <td>67-71</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">L</td>
+              <td>92-96</td>
+              <td>72-76</td>
+            </tr>
+            <tr>
+              <td class="py-2 font-bold">XL</td>
+              <td>97-101</td>
+              <td>77-81</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-[10px] text-gray-400 mt-4 text-center">نصيحة: إذا كنتِ محتارة بين مقاسين، اختاري الأكبر للراحة.</p>
+    </div>
+  </div>
+
+  <!-- Cart Drawer (Connected) -->
+  <div id="cartOverlay" class="fixed inset-0 z-[70] hidden">
+    <div class="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity" onclick="toggleCart(false)"></div>
+    <aside
+      class="absolute top-0 left-0 w-full sm:w-[420px] h-full bg-white shadow-2xl flex flex-col transform transition-transform duration-300">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100 sticky top-0 bg-white z-10">
+        <h3 class="font-playfair font-bold text-xl text-primary">سلة التسوق <span id="cartCountBadge"
+            class="text-sm bg-accent/10 text-accent px-2 py-0.5 rounded-full mr-2 font-sans font-bold">0</span></h3>
+        <button onclick="toggleCart(false)" class="p-2 -mr-2 text-gray-400 hover:text-primary transition-colors">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Free Shipping Bar -->
+      <div class="bg-sand/30 px-6 py-4 border-b border-gray-50">
+        <p id="shippingMessage" class="text-xs text-primary font-bold mb-2">تبقّى <span class="text-accent">111
+            ر.س</span> للحصول على شحن مجاني</p>
+        <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div id="shippingProgressBar" class="h-full bg-accent transition-all duration-500" style="width: 30%"></div>
+        </div>
+      </div>
+
+      <!-- Items -->
+      <div id="cartItems" class="flex-1 overflow-y-auto px-6 py-4 space-y-4">
+        <!-- Dynamic Items -->
+      </div>
+
+      <!-- Empty State (Hidden by default) -->
+      <div id="cartEmptyState" class="hidden flex-1 flex flex-col items-center justify-center text-gray-400 space-y-4">
+        <svg class="w-16 h-16 opacity-20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path>
+        </svg>
+        <p class="text-sm">سلة التسوق فارغة</p>
+        <button onclick="toggleCart(false)" class="text-accent text-sm font-bold hover:underline">تسوقي الآن</button>
+      </div>
+
+      <!-- Footer -->
+      <div
+        class="border-t border-gray-100 px-6 py-6 space-y-4 bg-white sticky bottom-0 z-10 shadow-[0_-5px_20px_rgba(0,0,0,0.03)]">
+        <div class="space-y-2">
+          <div class="flex justify-between text-sm text-gray-500"><span>المجموع الفرعي</span><span id="subtotal"
+              class="font-bold text-primary">0 ر.س</span></div>
+          <div class="flex justify-between text-sm text-gray-500"><span>الضريبة (15%)</span><span id="vat"
+              class="font-bold text-primary">0 ر.س</span></div>
+          <div class="flex justify-between text-lg font-bold text-primary pt-2 border-t border-dashed border-gray-100">
+            <span>الإجمالي</span>
+            <span id="total" class="text-accent font-playfair">0 ر.س</span>
+          </div>
+        </div>
+        <a href="checkout_gulf.html"
+          class="w-full bg-primary text-white py-4 rounded-xl text-center block text-sm font-bold hover:bg-primary-light transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2">
+          <span>إتمام الطلب آمن</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+            </path>
+          </svg>
+        </a>
+      </div>
+    </aside>
+  </div>
+
+
+  <script>
+    // --- Mobile Menu ---
+    function toggleMobileMenu(open) {
+      const overlay = document.getElementById('mobileMenu');
+      const backdrop = document.getElementById('mobileMenuBackdrop');
+      const panel = document.getElementById('mobileMenuPanel');
+
+      if (open === true || (open === undefined && overlay.classList.contains('hidden'))) {
+        overlay.classList.remove('hidden');
+        requestAnimationFrame(() => {
+          backdrop.classList.remove('opacity-0');
+          panel.classList.remove('translate-x-full');
+        });
+      } else {
+        backdrop.classList.add('opacity-0');
+        panel.classList.add('translate-x-full');
+        setTimeout(() => {
+          overlay.classList.add('hidden');
+        }, 300);
+      }
+    }
+    document.getElementById('mobileMenuBtn')?.addEventListener('click', () => toggleMobileMenu(true));
+
+    // --- Product Logic ---
+    let activeSize = 'M';
+
+    function changeImage(el) {
+      const src = el.querySelector('img').src;
+      const main = document.getElementById('mainImage');
+      main.parentElement.classList.add('opacity-50');
+      setTimeout(() => {
+        main.src = src;
+        main.parentElement.classList.remove('opacity-50');
+      }, 200);
+      document.querySelectorAll('button[onclick="changeImage(this)"]').forEach(b => b.classList.remove('border-primary'));
+      el.classList.add('border-primary');
+    }
+
+    function selectColor(btn, name) {
+      document.querySelectorAll('.color-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('selectedColorName').textContent = name;
+    }
+
+    function selectSize(btn, name) {
+      activeSize = name;
+      document.querySelectorAll('.size-option').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('selectedSizeName').textContent = name;
+    }
+
+    function toggleSizeGuide() {
+      const modal = document.getElementById('sizeGuideModal');
+      modal.classList.toggle('hidden');
+      modal.classList.toggle('flex');
+    }
+
+    // --- CART LOGIC (Connected) ---
+    // Single Product Data
+    const currentProduct = {
+      id: "elora-set-01",
+      name: "طقم إليورا كلاسيك - دانتيل فاخر",
+      price: 189,
+      img: "https://m.media-amazon.com/images/I/71u9y-e2QpL._AC_UY1000_.jpg",
+      color: "أسود ملكي"
+    };
+
+    let cart = JSON.parse(localStorage.getItem('pro-cart-v1')) || [];
+    const FREE_SHIPPING_THRESHOLD = 299;
+
+    function saveCart() {
+      localStorage.setItem('pro-cart-v1', JSON.stringify(cart));
+      updateCartUI();
+    }
+
+    function toggleCart(open) {
+      const overlay = document.getElementById('cartOverlay');
+      if (open === true) overlay.classList.remove('hidden');
+      else if (open === false) overlay.classList.add('hidden');
+      else overlay.classList.toggle('hidden');
+    }
+
+    // Main Add Function
+    function addProductToCart() {
+      if (!activeSize) {
+        // Should not happen as M is default, but safety check
+        selectSize(document.querySelector('.size-option[onclick*="M"]'), 'M');
+      }
+      addToCart(currentProduct.id, activeSize);
+    }
+
+    // Quick Buy
+    function buyNow() {
+      addProductToCart();
+      window.location.href = 'checkout_gulf.html';
+    }
+
+    function addToCart(id, size) {
+      const key = `${id}_${size}`;
+      const existing = cart.find(i => i.key === key);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({
+          ...currentProduct,
+          size: size,
+          key: key,
+          color: document.getElementById('selectedColorName').textContent,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      toggleCart(true);
+
+      // Visual Feedback
+      const btn = document.querySelector('button[onclick="addProductToCart()"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = `<span class="text-white">✓ تم الإضافة</span>`;
+      btn.classList.add('bg-green-600');
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('bg-green-600');
+      }, 1500);
+    }
+
+    function changeQty(key, delta) {
+      const item = cart.find(i => i.key === key);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(i => i.key !== key);
+      saveCart();
+    }
+
+    function updateCartUI() {
+      const countEl = document.getElementById('cartCount');
+      const countBadge = document.getElementById('cartCountBadge');
+      const itemsDiv = document.getElementById('cartItems');
+      const emptyState = document.getElementById('cartEmptyState');
+
+      const totalQty = cart.reduce((s, i) => s + i.qty, 0);
+      let subtotal = 0;
+
+      if (countEl) countEl.textContent = totalQty;
+      if (countBadge) countBadge.textContent = totalQty;
+
+      if (cart.length === 0) {
+        itemsDiv.innerHTML = '';
+        emptyState.classList.remove('hidden');
+      } else {
+        emptyState.classList.add('hidden');
+        itemsDiv.innerHTML = cart.map(i => {
+          subtotal += i.price * i.qty;
+          return `
+          <div class="flex gap-4 group">
+            <div class="w-20 h-24 bg-gray-50 rounded-2xl overflow-hidden flex-shrink-0 border border-gray-100">
+              <img src="${i.img}" class="w-full h-full object-cover">
+            </div>
+            <div class="flex-1 flex flex-col justify-between py-1">
+              <div>
+                <h4 class="text-sm font-bold text-primary line-clamp-1 mb-1">${i.name}</h4>
+                <div class="flex gap-2 text-[10px] text-gray-500">
+                   <span class="bg-gray-100 px-1.5 rounded">${i.size}</span>
+                   <span class="bg-gray-100 px-1.5 rounded">${i.color}</span>
+                </div>
+                <p class="text-xs font-extrabold text-accent font-outfit mt-1">${i.price} ر.س</p>
+              </div>
+              <div class="flex items-center gap-3 justify-between">
+                <div class="flex items-center border border-gray-100 rounded-lg px-1 bg-gray-50">
+                  <button onclick="changeQty('${i.key}', -1)" class="w-6 h-6 hover:bg-gray-200 rounded transition-colors">-</button>
+                  <span class="w-6 text-center text-xs font-bold">${i.qty}</span>
+                  <button onclick="changeQty('${i.key}', 1)" class="w-6 h-6 hover:bg-gray-200 rounded transition-colors">+</button>
+                </div>
+                <button onclick="changeQty('${i.key}', -${i.qty})" class="text-gray-300 hover:text-red-500 transition-colors">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                </button>
+              </div>
+            </div>
+          </div>`;
+        }).join('');
+      }
+
+      // Calculations
+      const vat = subtotal * 0.15;
+      const total = subtotal + vat;
+
+      document.getElementById('subtotal').textContent = subtotal.toLocaleString() + ' ر.س';
+      document.getElementById('vat').textContent = vat.toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' ر.س';
+      document.getElementById('total').textContent = total.toLocaleString(undefined, { maximumFractionDigits: 2 }) + ' ر.س';
+
+      // Shipping Bar Logic
+      const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+      const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+      const msgEl = document.getElementById('shippingMessage');
+      const barEl = document.getElementById('shippingProgressBar');
+
+      if (barEl) barEl.style.width = `${progress}%`;
+      if (msgEl) {
+        if (remaining > 0) {
+          msgEl.innerHTML = `تبقّى <span class="text-accent">${remaining.toLocaleString()} ر.س</span> للحصول على شحن مجاني`;
+        } else {
+          msgEl.innerHTML = `<span class="text-green-600">🎉 مبروك! طلبك مؤهل للشحن المجاني</span>`;
+          if (barEl) barEl.classList.add('bg-green-500');
+        }
+      }
+    }
+
+    // Init
+    updateCartUI();
+
+  </script>
+</body>
+
+</html>
