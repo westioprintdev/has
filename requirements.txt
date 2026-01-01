@@ -1,6 +1,7 @@
 fastapi
-uvicorn
+uvicorn[standard]
 pydantic
 websockets
 jinja2
 python-multipart
+aiofiles
